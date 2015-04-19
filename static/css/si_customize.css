@@ -2,7 +2,83 @@
     background-color: #F36E21;
     border-color: #E5C6A7;
 }
-.navbar-brand{
-    color: white !important; 
+.navbar-default .navbar-brand{
+    color: white; 
     font-size: 22px; 
+}
+.navbar-default .navbar-toggle {
+    border-color: #C36414;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus{
+    background-color: rgb(244, 120, 56);
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    font-size: 15px;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: whitesmoke;
+}
+
+.container-fluid{
+    height:100%;
+}
+.home{
+    height:100%;
+}
+#main{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.myRow{
+    height:40%;
+}
+html{
+    height: 100%;
+}
+
+#upcoming_col, #announce_col, 
+#options_col, #about, #employ, 
+#updates{
+    border: 1px solid #E5C6A7; 
+
+} 
+
+#announce_col, 
+#employ{
+    border-radius: 4px;
+    background-color: #F36E21;
+    height: 90%;
+    //min-height: 100px;
+}
+#upcoming_label, #options_label, #about_label, #updates_label{
+    height: auto;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    background-color: #F36E21;
+    border-bottom: 1px solid #E5C6A7;
+}
+#upcoming_col, #about, #options_col, #updates {
+    border: 1px solid #E5C6A7;
+    border-radius: 4px;
+    height: 90%;
+    padding: -10px;
+}
+#options_col, 
+#employ{
+    margin-top: 10px;
+}
+#right_upper_col, #left_buttom_col{
+    height: 100%;
+}
+.col-md-5{
+    height: 100%;
+}
+.topics{
+    color: white;
+    margin: 5px;
 }
