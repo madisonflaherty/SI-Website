@@ -4,10 +4,11 @@
     <title id="site_title"></title>
     <link rel="stylesheet" type="text/css" href="static_base/bootstrap-3.3.4-dist/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/si_customize.css">
+    <link rel="icon" type="image/png" href="img/si_logoorange.png">
 </head>
 <body class="home">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
+    <nav class="navbar navbar-default" >
+        <div class="container-fluid" id="si_nav">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-bar">
                     <span class="sr-only">Toggle navigation</span>
@@ -20,35 +21,76 @@
             <div class="collapse navbar-collapse" id="navigation-bar">
                 <ul class="nav navbar-nav">
                     <li><a href="#">Find Your Sessions</a></li>
-                    <li><a href="#">Announcements</a></li>
                     <li><a href="#">Employment</a></li>
-                    <li><a href="#">About</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Following is all filler code which will be replaced by javascript cookies --> 
-    <div class="container-fluid" id="main">
+    <div class="container" id="main">
          <div class="row myRow" id="top_row">
              <div class="col-md-5" id="upcoming_col">
                  <div class="row" id="upcoming_label">
-                    <p class="text-center lead topics">Upcoming SI Sessions</p>
+                    <p class="text-center lead topics">Your Upcoming SI Sessions</p>
                 </div> 
+                <div class="col-md-12">
+                    <div class="row session_data">
+                        <div class="col-md-1 tab"></div>
+                        <div class="col-md-11">
+                            <p><strong>CSCI-142&nbsp;&nbsp;|&nbsp;&nbsp;Computer Science II</strong>
+                            Monday, 2:00PM in GOL-3672
+                            </br>Professor: Steele
+                            </br>SI Leader: Carl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>carl@nullmailer.com</a></p>
+                        </div>
+                    </div>
+                    <div class="row session_data">
+                    <div class="col-md-1 tab"></div>
+                    <div class="col-md-11">
+                        <p><strong>CSCI-142&nbsp;&nbsp;|&nbsp;&nbsp;Computer Science II</strong>
+                        Thursday, 6:00PM in NRH-1250
+                        </br>Professor: Steele
+                        </br>SI Leader: Carl&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>carl@nullmailer.com</a></p>
+                    </div>
+                </div>
+
+                </div>
              </div> <!--upcoming col -->
              <div class="col-md-5 col-md-offset-1" id="right_upper_col">
                 <div class="row myRow">
                     <div class="col-md-12" id="announce_col">
                         <p class="text-center lead topics">Announcements</p>
-                    </div>
-                </div>
-                <div class="row myRow">
-                    <div class="col-md-12" id="options_col">
-                        <div class="row" id="options_label">
-                            <p class="text-center lead topics">Options</p>  
+                        <div class="row" id="white">
+                            <div class="contents text-center">
+                                <hr>
+                                <p><strong>04/15</strong> With the last few weeks of the
+                                semester approaching take some time to distress and maybe do a
+                                powerful pose before an exam! Check out this TED Talk by Amy 
+                                Cuddy-by SIL Victoria Cardenas.</p>
+                                <hr>
+                                <p><strong>04/08</strong> Know your worth and demand three times
+                                 as much. -Found through Trixie Mattel. </br>Keep going. 
+                                 You're in the home stretch. Give it your all! Remember, 
+                                 you are stronger and more capable than you think you are. :) 
+                                 Shared by SIL Shareef Alwarasneh</p>
+                              <hr>
+                                <p><strong>04/15</strong> With the last few weeks of the
+                                semester approaching take some time to distress and maybe do a
+                                powerful pose before an exam! Check out this TED Talk by Amy 
+                                Cuddy-by SIL Victoria Cardenas.</p>
+                                <hr>
+                                <p><strong>04/08</strong> Know your worth and demand three times
+                                 as much. -Found through Trixie Mattel. </br>Keep going. 
+                                 You're in the home stretch. Give it your all! Remember, 
+                                 you are stronger and more capable than you think you are. :) 
+                                 Shared by SIL Shareef Alwarasneh</p>
+
+
+                            
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> <!--col --> 
+                            </div> <!--col --> 
          </div> <!-- row -->
 
          <div class="row myRow" id="bot_row">
@@ -58,18 +100,27 @@
                          <div class="row" id="about_label">
                             <p class="text-center lead topics">About</p>
                         </div>
+                        <div class="row" id="about_contents">
+                            <p class="contents text-center">If you are enrolled in an SI supported course section, we encourage you to give <strong>SI a try</strong>!</br>SI at RIT is housed within RIT's <a>Academic Support Center</a>.</p>
+                        </div>
                      </div>
                  </div> <!-- row --> 
-                 <div class="row myRow">
+                 <!--<div class="row myRow">
                      <div class="col-md-12" id="employ">
                          <p class="text-center lead topics">Employ</p>
+                         <div class="contents text-center" id="white">
+                            Are you an Undergraduate Student looking for employment? </br>Do you have recent experience with the courses we need to support?</br>Request an Application.
+                         </div> 
                      </div>
-                 </div> <!-- row --> 
+                     
+                 </div>  -->
 
              </div> <!-- col -->            
              <div class="col-md-5 col-md-offset-1" id="updates">
                  <div class="row" id="updates_label">
-                    <p class="text-center lead topics">Updates</p>
+                    <p class="text-center lead topics">Twitter</p>
+                </div>
+                <div class="row" id="updates_content">
                 </div>
              </div>
          </div> <!-- row --> 
