@@ -1,0 +1,22 @@
+<html ng-app="myApp">
+
+<head>
+  <script data-require="angular.js@1.1.1" data-semver="1.1.1" src="https://code.angularjs.org/1.1.1/angular.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js"></script>
+</head>
+
+<body>
+  <div ng-controller="MyCtrl" id="ctl">
+    <h2 ng-show="data">Data from callback</h2>
+    <pre>{{data}}</pre>
+    <h2 ng-show="success">Success</h2>
+    <pre>{{success}}</pre>
+    <h2 ng-hide="data">Error</h2>
+    <pre>{{error}}</pre>
+  </div>
+</body>
+
+</html>
+
+
