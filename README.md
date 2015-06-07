@@ -10,3 +10,8 @@ See [LICENSE] (https://github.com/madisonflaherty/SI-Website/blob/master/LICENSE
 
 ##Authors
 The easily changeable SI-Website wes created by Madison Flaherty for the local Supplemental Instruction branch. 
+
+##Live Preview
+It is possible to view the most up-to-date and stable version of the
+website hosted [here](http://madisonflaherty.github.io/SI-Website/)
+thanks to [pages.github.com](pages.github.com).
