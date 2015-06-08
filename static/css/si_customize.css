@@ -22,14 +22,15 @@ body{
 }
 
 a.btn.btn-primary.btn-lg {
-    color: #B8D2CA;
+    color: #C7DFD7;
     background-color: #43A786;
     border-color: #009162;
     margin-left: auto;
+    margin-right: auto;
 }
 
 a.btn.btn-primary.btn-lg:hover {
-    color: #C7DFD7;
+    color: #EAEEEC;;
 }
 
 .header{
@@ -53,6 +54,7 @@ a.btn.btn-primary.btn-lg:hover {
 .sessions{
   color: black;
 }
+
 .class_name{
   border-right: 2px solid #F2712F;
 }
