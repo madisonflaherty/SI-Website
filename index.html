@@ -5,118 +5,89 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/si_customize.css">
     <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-resource.js"></script>
+    <script type="text/javascript" src="static/js/sessionScript.js"></script>
     <link rel="icon" type="image/png" href="static/img/favicon.ico">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class="home">
-  <!-- Following is all filler code which will be replaced by javascript cookies -->
   <div class="jumbotron">
-    <div class="container">
-      <h1 class="your_sessions">Your Upcoming SI Sessions</h1>
-      <br>
-
-      <div class="container sessions">
-        <!-- Filler Session info until database API is complete -->
-        <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-10">
-
-            <div class="well well-sm">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="class_name">
-                      <br>
-                      <h3>
-                        <strong>Programming for IT II</strong><br>
-                      </h3>
-                      <div class="rel_inst">
-                        <p><strong>Professor: </strong>Tanweer Alam</p>
-                        <p><strong>Leader: </strong>Johnathan</p>
+    <div ng-app="get_sessions">
+      <div class="container">
+        <h3 class="your_sessions">Your Upcoming SI Sessions</h3>
+        <br>
+        <div ng-controller="SessionsController as sc" class="container sessions">
+          <!-- Filler Session info until database API is complete -->
+          <div ng-repeat="session in sc.sectionInfo">
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-sm-12 col-md-10">
+                <div class="well well-sm">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="class_name">
+                          <br>
+                          <h5>
+                          <strong>{{getSectionName( sc.sectionsDict, session.secId )}}</strong><br>
+                          </h5>
+                          <br>
+                          <div class="rel_inst">
+                            <p><strong>Professor: </strong>{{session.professor}}</p>
+                            <p><strong>Leader: </strong>{{session.leader}}</p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div class="col-md-8">
-                    <br>
-                    <br>
-                    <p><strong>When: </strong>Thursday, March 20 at 5:00PM</p>
-                    <p><strong>Where: </strong>GOL-2650</p>
-                  </div>
-                </div> <!-- row -->
-              </div> <!-- container -->
-            </div> <!-- well -->
-
-
-
-          </div>
-          <div class="col-md-1"></div>
-        </div> <!-- row -->
-        
-
-
- <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-md-10">
-
-            <div class="well well-sm">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="class_name">
-                      <br>
-                      <h3>
-                        <strong>Programming for IT II</strong><br>
-                      </h3>
-                      <p>
-                        <strong>Professor: </strong>Tanweer Alam
-                        <strong>Leader: </strong>Johnathan
-                      </p>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-md-8">
-                    <br>
-                    <br>
-                    <p><strong>When: </strong>Monday, March 24 at 11:00 AM</p>
-                    <p><strong>Where: </strong>GOL-2650</p>
-                  </div>
-                </div> <!-- row -->
-              </div> <!-- container -->
-            </div> <!-- well -->
-
-          </div>
-          <div class="col-md-1"></div>
-        </div> <!-- row -->
-      </div>
-
-      <a class="btn btn-primary btn-lg pull-right" href="#" role="button">Add New Section &raquo;</a></p>
+                      <div class="col-md-8 session_reps">
+                        <br>
+                        <div ng-repeat="sessiontime in session.sessions">
+                          <div class="well well-sm inner-well">
+                          <p><strong>When: </strong>{{ comp_date(sessiontime.dateTime) }}</p>
+                          <p><strong>Where: </strong>{{sessiontime.location}}</p>
+                        </div>
+                        </div>
+                      </div>
+                    </div> <!-- row -->
+                  </div> <!-- container -->
+                </div> <!-- well -->
+              </div>
+              <div class="col-md-1"></div>
+            </div> <!-- row -->
+          </div> <!-- ng-repeat -->
+          <a class="btn btn-primary btn-lg pull-right" href="sections.html" role="button">Add New Section &raquo;</a></p>
+        </div>
+      </div> <!-- jumbotron -->
     </div>
-  </div> <!-- jumbotron -->
+  </div>
 
 
 
-  <div class="container">
-    <div class="row">
+      <div class="container">
+        <div class="row">
 
-      <div class="col-md-4" id="about">
-        <h1 class="header">About SI</h1>
-        <p class="contents text-center">
-          If you are enrolled in an SI supported course section, we encourage you to give <strong>SI a try</strong>!
-        </p>
-        <h4 class="header">What is SI?</h4>
-        <p class="text-center">The Supplemental Instruction (SI) program is designed to proactively support students enrolled in supported sections of traditionally challenging courses.</p> 
-        <p class="text-center">SI sessions are offered twice weekly to help students increase their understanding of the course material while learning applied study skills from a peer leader who has successfully completed the course them self.</p> 
-        <p class="text-center">Through structured one-hour sessions in an academic setting, students are encouraged to work collaboratively to identify what learn with how to learn it.</p>
-        <h4 class="header">What's in it for you?</h4>
-        <p class="text-center">Supporting research has shown that students who regularly attend SI are more likely to earn a letter grade higher than their classmates that do not attend SI sessions. They will develop a better understanding of course content as well as more effective ways of studying. This will help in other classes too.</p>
-        <p class="contents text-center">
-          SI at RIT is housed within RIT's <a href="http://www.rit.edu/studentaffairs/asc/">Academic Support Center</a>.
-        </p>
+          <div class="col-md-4" id="about">
+            <h3 class="header">About SI</h3>
+            <p class="contents text-center">
+            If you are enrolled in an SI supported course section, we encourage you to give <strong>SI a try</strong>!
+            </p>
+            <div class="hidden-xs">
+              <h4 class="header">What is SI?</h4>
+              <p class="text-center">The Supplemental Instruction (SI) program is designed to proactively support students enrolled in supported sections of traditionally challenging courses.</p> 
+              <p class="text-center">SI sessions are offered twice weekly to help students increase their understanding of the course material while learning applied study skills from a peer leader who has successfully completed the course them self.</p> 
+              <p class="text-center">Through structured one-hour sessions in an academic setting, students are encouraged to work collaboratively to identify what learn with how to learn it.</p>
+              <h4 class="header">What's in it for you?</h4>
+              <p class="text-center">Supporting research has shown that students who regularly attend SI are more likely to earn a letter grade higher than their classmates that do not attend SI sessions. They will develop a better understanding of course content as well as more effective ways of studying. This will help in other classes too.</p>
+              <p class="contents text-center">
+              SI at RIT is housed within RIT's <a href="http://www.rit.edu/studentaffairs/asc/">Academic Support Center</a>.
+              </p>
+        </div>
       </div>
 
       <!-- Filler Announcements until database api is complete --> 
       <div class="col-md-4" id="announcements">
-        <h1 class="header">Announcements</h1>
+        <h3 class="header">Announcements</h3>
         <div class="well well-sm">
           <div class="row">
             <div class="col-xs-2">
@@ -124,7 +95,7 @@
             </div>
 
             <div class="col-xs-10">
-              <p class="announce_body">With the last few weeks of the semester approaching take some time to distress and maybe do a powerful pose before an exam! Check out <a>this TED Talk</a> by Amy Cuddy-by SIL Victoria Cardenas.</p>
+              <p class="announce_body contents">With the last few weeks of the semester approaching take some time to distress and maybe do a powerful pose before an exam! Check out <a>this TED Talk</a> by Amy Cuddy-by SIL Victoria Cardenas.</p>
             </div>
           </div> <!-- announce_row -->
         </div> <!-- well -->
@@ -136,7 +107,7 @@
             </div>
 
             <div class="col-xs-10">
-              <p class="announce_body">Know your worth and demand three times as much. -Found through Trixie Mattel. 
+              <p class="announce_body contents">Know your worth and demand three times as much. -Found through Trixie Mattel. 
               Keep going. You're in the home stretch. Give it your all! Remember, you are stronger and more capable than you think you are. :) Shared by SIL Shareef Alwarasneh</p>
             </div>
           </div> <!-- announce_row -->
@@ -144,15 +115,13 @@
       </div>
 
       <div class="col-md-4" id="twitter">
-        <h1 class="header">Follow Us on Twitter</h1>
-        <a class="twitter-timeline"
-           href="https://twitter.com/SIatRIT"
-           height="500"
-           data-widget-id="606504109378695170"
-           data-chrome="transparent noheader nofooter">
-           Follow SI @ RIT by @SIatRIT</a>
-
-
+        <h3 class="header">Follow Us on Twitter</h3>
+          <a class="twitter-timeline tw-align-center"
+             href="https://twitter.com/SIatRIT"
+             height="500"
+             data-widget-id="606504109378695170"
+             data-chrome="transparent noheader nofooter">
+             Follow SI @ RIT by @SIatRIT</a>
       </div>
 
 
@@ -161,9 +130,7 @@
 
 
     </body>
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="static/js/script.js"></script>
 <script src="static/js/script_customize.js"></script>
 <script src="static/js/display_twitter.js"></script>
-<script src="static/static_base/bootstrap-3.3.4-dist/js/bootstrap.min.js"</script>
-</html>    

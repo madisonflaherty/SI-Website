@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/si_customize.css">
+    <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-resource.js"></script>
+    <script type="text/javascript" src="static/js/sessionScript.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body ng-app="get_sessions">
+    <div class="jumbotron">
+      <div class="container">
+        <h3 class="your_sessions">Pick Your Sections</h3>
+        <p> Select the class section which applies to you or <a href="index.html">return to the main page</a>.</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+          <div ng-controller="SessionsController as sc">
+            <table class="table table-responsive table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center"><h5>Course Name</h5></th>
+                  <th class="text-center"><h5>Section ID</h5></th>
+                    <th></th>
+                </tr>
+              </thead>
+              <tr ng-repeat="section in sc.sections">
+                <td>
+                  <p>{{section.courseName}}</p>
+                </td>
+                <td>
+                  <p>{{section.courseNumber}}</p>
+                </td>
+                <td>
+                  <a ng-click="add_section('sections',section.secid)" class="btn btn-primary btn-lg" href="index.html" role="button">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div> <!-- col-md-10 -->
+        <div class="col-md-1">
+        </div>
+      </div> <!-- row -->
+    </div> <!-- container -->
+  </body>
+</html>

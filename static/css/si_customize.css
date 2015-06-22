@@ -1,26 +1,61 @@
+/* Mobile Support Setup*/
 .home{
     height:100%;
 }
 #main{
-    width: 95%;
     margin-left: auto;
     margin-right: auto;
 }
-
 html{
     height: 100%;
     background-color: #FFF6F2;
 }
-
 body{
   background-color: inherit;
+  line-height:1.2em;
+  font-size:20px;
+}
+p{
+  font-size:110%;
+}
+h1{
+  font-size:190%;
+}
+h2{
+  font-size:180%
+}
+h3{
+  font-size:170%;
+}
+h4{
+  font-size:150%;
+}
+h5{
+  font-size:120%;
 }
 
+
+/* Index CSS */
 .jumbotron{
+    padding-top:0px;
+    padding-bottom:1em;
+    padding-left:0px;
+    padding-right:0px;
     background-color: #F2712F;
     color: #FFE2D4;
 }
+.jumbotron .col-sm-12 {
+  padding-left:0px;
+  padding-right:0px;
+}
 
+a {
+  color: #43A786;
+}
+a:hover {
+  color: #EAEEEC;
+  text-decoration: none;
+}
 a.btn.btn-primary.btn-lg {
     color: #C7DFD7;
     background-color: #43A786;
@@ -30,7 +65,7 @@ a.btn.btn-primary.btn-lg {
 }
 
 a.btn.btn-primary.btn-lg:hover {
-    color: #EAEEEC;;
+    color: #EAEEEC;
 }
 
 .header{
@@ -42,9 +77,14 @@ a.btn.btn-primary.btn-lg:hover {
   background-color: #FFE2D4;
   border-color:#F3C9B5;
 }
+.well.well-sm.inner-well{
+  border-color: #F2712F;
+}
 
+
+/* Southern View on Index */
 .announce_body{
-  text-align: justify;
+  text-align: left;
 }
 
 .date_text{
@@ -55,6 +95,20 @@ a.btn.btn-primary.btn-lg:hover {
   color: black;
 }
 
-.class_name{
-  border-right: 2px solid #F2712F;
+.session_reps{
+  border-left: 2px solid #F2712F;
 }
+iframe#twitter-widget-0{
+  margin:auto;
+}
+
+
+/* Tables */
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #FFE2D4;
+}
+
+td > p.ng-binding {
+  padding-left: 1em;
+}
+

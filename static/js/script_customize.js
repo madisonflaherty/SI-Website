@@ -17,25 +17,6 @@ var title = "SI @ " + schoolInitials;
 //  Must replace with your own means of accessing your database
 //
 
-function httpGet(url)
-{
-var options = {
-  host = url
-  path = "/studentaffairs/siapp/get.php?type=sections"
-
-}
-
- return  result;
-}
-
-
-function httpGetSections()
-{
-  return httpGet("http://www.rit.edu")
-}
-
-console.log(JSON.stringify(httpGetSections()))
-
 
 //
 //
