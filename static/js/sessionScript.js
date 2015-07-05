@@ -7,14 +7,13 @@
      * Section functions
      */
     //this.sections = sections_json;
-    this.sectionsDict = {};
-    this.sections = sectionFunc(this.sectionsDict);
+    $scope.sectionsDict = {};
+    sectionFunc(this.sectionsDict);
     function sectionFunc(dict){
-      sects = undefined;
       request = section_req_func();
-      http_func(request).then(function(response){console.log(response.data); sects = response;});//make_dict(response, dict); });
-      console.log(sects);
-      return sects
+      http_func(request).then(function(response){
+        console.log(response.data); $scope.sections = response.data;
+        });//make_dict(response, dict); });
     }
     function section_req_func(){
       return {
