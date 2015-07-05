@@ -5,14 +5,15 @@
     <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-resource.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
     <script type="text/javascript" src="static/js/sessionScript.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body ng-app="get_sessions">
     <div class="jumbotron">
       <div class="container">
-        <h3 class="your_sessions">Pick Your Sections</h3>
-        <p> Select the class section which applies to you or <a href="index.html">return to the main page</a>.</p>
+        <h3 class="your_sessions">Manage Sections</h3>
+        <p> Add and remove class sections you are enrolled in or <a href="index.html">return to the main page</a>.</p>
       </div>
     </div>
     <div class="container">
@@ -39,6 +40,10 @@
                 <td>
                   <a ng-click="add_section('sections',section.secid)" class="btn btn-primary btn-lg" href="index.html" role="button">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                  </a>
+
+                  <a ng-click="remove_section(section.secid)" class="btn btn-primary btn-lg" href="index.html" role="button">
+                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                   </a>
                 </td>
               </tr>

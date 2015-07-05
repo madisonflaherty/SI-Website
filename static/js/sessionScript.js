@@ -6,27 +6,24 @@
     /**
      * Section functions
      */
-    this.sections = sections_json;
-    //this.sections = sectionFunc();
-    this.sectionsDict = make_dict(this.sections);
-    function sectionFunc(){
+    //this.sections = sections_json;
+    this.sectionsDict = {};
+    this.sections = sectionFunc(this.sectionsDict);
+    function sectionFunc(dict){
+      sects = undefined;
       request = section_req_func();
-      return http_func(request);
+      http_func(request).then(function(response){console.log(response.data); sects = response;});//make_dict(response, dict); });
+      console.log(sects);
+      return sects
     }
     function section_req_func(){
       return {
         method: 'GET',
-        url: 'http://api.ahanes.com:12333/get.php/?type=sections',
+        url: 'http://api.ahanes.com/get.php/?type=sections',
         header: { 'Content-Type' : 'text/html'}
       }
     }
-    function http_func(req){
-      $http(req)
-      .success(function(response){})
-      .error(function(response){console.log(response)});
-    }
-    function make_dict(sections){
-      dict = {};
+    function make_dict(sections, dict){
       for(i=0; i<sections.length; i++){
         dict[sections[i].secid] = sections[i].courseName;
       }
@@ -47,32 +44,27 @@
 
     function sectionInfoFunc() {
       sect_array = JSON.parse(localStorage.getItem("sections"))
-      console.log(sect_array);
       section_info = []
       if(sect_array != null){
         for(i=0; i<sect_array.length; i++){
           request = request_func(sect_array[i]);
-          http_func(request, function(response){section_info.push(response);console.log(response);});
+          http_func(request, function(response){section_info.push(response);});
         }
       }
-      console.log(section_info);
       return section_info;
     }
 
     function request_func(id) {
         return {
           method: 'GET',
-          url: 'http://api.ahanes.com:12333/get.php/?type=sectionInfo&secId=' + id,
+          url: 'http://api.ahanes.com/get.php/?type=sectionInfo&secId=' + id,
           header: { 'Content-Type' : 'text/html'}
         }
     }
     function http_func(req, succ){
-      $http(req)
-        .success(succ)
-        .error(function(response){console.log(response)});
+      return $http(req)
     }
     $scope.comp_date = function(date){
-      console.log("yup");
       return moment(date,"YYYY|MM|DD|HH|mm").calendar();
     }
     /*
@@ -95,6 +87,10 @@
     $scope.get_sections = function() {
       console.log("Getting sections");
       return localStorage.getItem("sections");
+    }
+    $scope.remove_section = function(key) {
+      console.log("Removing sections");
+      localStorage.remove(key);
     }
   });
 

@@ -67,6 +67,13 @@ a.btn.btn-primary.btn-lg {
 a.btn.btn-primary.btn-lg:hover {
     color: #EAEEEC;
 }
+.header a{
+  color: #FFE2d4;
+  text-align:center;
+}
+.panel-default>.panel-heading{
+  background-color: #F2712F;
+}
 
 .header{
   color: #F2712F;
