@@ -8,12 +8,11 @@
      */
     //this.sections = sections_json;
     $scope.sectionsDict = {};
-    sectionFunc(this.sectionsDict);
-    function sectionFunc(dict){
+    sectionFunc();
+    function sectionFunc(){
       request = section_req_func();
       http_func(request).then(function(response){
-        console.log(response.data); $scope.sections = response.data;
-        });//make_dict(response, dict); });
+        $scope.sections = response.data; make_dict($scope.sections); });
     }
     function section_req_func(){
       return {
@@ -22,35 +21,32 @@
         header: { 'Content-Type' : 'text/html'}
       }
     }
-    function make_dict(sections, dict){
+    function make_dict(sections){
       for(i=0; i<sections.length; i++){
-        dict[sections[i].secid] = sections[i].courseName;
+        $scope.sectionsDict[sections[i].secId] = sections[i].courseName;
       }
-      console.log("-->");
-      console.log(dict)
-      return dict;
     };
 
-    $scope.getSectionName = function(dict, id){
-      return dict[id]
+    $scope.getSectionName = function(id){
+      return $scope.sectionsDict[id]
     };
 
 
     /**
      * Section info functions
      */
-    this.sectionInfo = sectionInfoFunc();
+    sectionInfoFunc();
 
     function sectionInfoFunc() {
       sect_array = JSON.parse(localStorage.getItem("sections"))
-      section_info = []
+      $scope.section_info = []
       if(sect_array != null){
         for(i=0; i<sect_array.length; i++){
           request = request_func(sect_array[i]);
-          http_func(request, function(response){section_info.push(response);});
+          http_func(request).then(function(response){
+            $scope.section_info.push(response.data);});
         }
       }
-      return section_info;
     }
 
     function request_func(id) {
@@ -84,56 +80,49 @@
       localStorage.setItem(key, JSON.stringify(curr_sect_arr));
     }
     $scope.get_sections = function() {
-      console.log("Getting sections");
       return localStorage.getItem("sections");
     }
-    $scope.remove_section = function(key) {
-      console.log("Removing sections");
-      localStorage.remove(key);
+    $scope.empty_sections = function() {
+      return JSON.parse($scope.get_sections()) == null;
     }
+    $scope.contains_section = function(id){
+       return JSON.parse($scope.get_sections()).indexOf(id) != -1;
+    }
+    $scope.remove_section = function(data) {
+      console.log("Removing sections");
+      sections = eval($scope.get_sections());
+      index = sections.indexOf(data);
+      console.log(typeof(sections))
+      sections.splice(index, 1);
+      console.log(sections)
+      localStorage.removeItem("sections");
+      if(sections.length > 0){
+        localStorage.setItem("sections", JSON.stringify(sections));
+      }
+    }
+
+    /*
+     * Announcements Functions
+     */
+    function announcement_request(){
+      return {
+        method: 'GET',
+        url: 'http://api.ahanes.com/get.php/?type=announcements',
+        header: { 'Content-Type' : 'text/html' }
+      }
+    }
+    getAnnouncements();
+    function getAnnouncements(){
+      request = announcement_request();
+      http_func(request).then(function(response){
+        $scope.announcements = response.data;});
+    }
+    $scope.formattedAnnouncementDate = function(date){
+      return moment(date,"YYYY|MM|DD|HH|mm").format("MM/DD")
+    }
+
   });
 
-  /**
-   * Testing JSON
-   */
-  sections_json = [
-    {
-    secid :  5,
-    courseName :  "Programming for IT II",
-    courseNumber :  "4002-218-5 (2122)"
-    },
-    {
-    secid :  6,
-    courseName :  "Introduction to Computer Science I",
-    courseNumber :  "CSCI-141-03"
-    }
-  ]
-
-
-  sessions_info_json = [
-    {
-    secId :  1,
-    professor :  "Tanweer Alam",
-    leader :  "Johnathan",
-    sessions :
-    {
-        1:{
-            sessionId :  "h1suv577eb4687or05jo5b00b8",
-            dateTime :  "2012|12|03|11|00",
-            day :  "Monday",
-            location :  "GOL-2650",
-            bonusStatus :  false
-        },
-        2: {
-            sessionId :  "js704v4rktu3clqn3953i3bmf8",
-            dateTime :  "2012|12|03|10|00",
-            day :  "Monday",
-            location :  "GOL-2650",
-            bonusStatus :  false
-        }
-    }
-  }
-  ]
 
   moment.locale('en', {
     calendar: {

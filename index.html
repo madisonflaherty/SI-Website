@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="get_sessions">
 <head>
     <title id="site_title"></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/si_customize.css">
-    <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-resource.js"></script>
@@ -12,16 +11,20 @@
     <link rel="icon" type="image/png" href="static/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body class="home">
+<body ng-controller="SessionsController as sc" class="home">
   <div class="jumbotron">
-    <div ng-app="get_sessions">
+    <div>
       <div class="container">
-        <h3 class="your_sessions">Your Upcoming SI Sessions</h3>
-        <br>
-        <div ng-controller="SessionsController as sc" class="container sessions">
-          <!-- Filler Session info until database API is complete -->
-          <div ng-repeat="session in sc.sectionInfo">
-            <div class="row">
+        <div class="container">
+          <div ng-hide="empty_sections()">
+            <h3 class="your_sessions">Your Upcoming SI Sessions</h3>
+          </div>
+          <div ng-show="empty_sections()">
+            <h3 class="your_sessions">You Haven't Selected any of Your Sections Yet...</h3>
+          </div>
+          <br>
+          <div ng-repeat="session in section_info">
+            <div class="row sessions">
               <div class="col-md-1"></div>
               <div class="col-sm-12 col-md-10">
                 <div class="well well-sm">
@@ -31,7 +34,7 @@
                         <div class="class_name">
                           <br>
                           <h5>
-                          <strong>{{getSectionName( sc.sectionsDict, session.secId )}}</strong><br>
+                          <strong>{{getSectionName(session.secId )}}</strong><br>
                           </h5>
                           <br>
                           <div class="rel_inst">
@@ -44,9 +47,12 @@
                         <br>
                         <div ng-repeat="sessiontime in session.sessions">
                           <div class="well well-sm inner-well">
-                          <p><strong>When: </strong>{{ comp_date(sessiontime.dateTime) }}</p>
-                          <p><strong>Where: </strong>{{sessiontime.location}}</p>
-                        </div>
+                            <div ng-show="sessiontime.bonusStatus">
+                              <span class="label label-success pull-right">BONUS</span>
+                            </div>
+                            <p><strong>When: </strong>{{ comp_date(sessiontime.dateTime) }}</p>
+                            <p><strong>Where: </strong>{{sessiontime.location}}</p>
+                          </div>
                         </div>
                       </div>
                     </div> <!-- row -->
@@ -56,7 +62,7 @@
               <div class="col-md-1"></div>
             </div> <!-- row -->
           </div> <!-- ng-repeat -->
-          <a class="btn btn-primary btn-lg pull-right" href="sections.html" role="button">Add New Section &raquo;</a></p>
+          <a class="btn btn-primary btn-lg pull-right" href="sections.html" role="button">Manage Your Sections &raquo;</a></p>
         </div>
       </div> <!-- jumbotron -->
     </div>
@@ -122,30 +128,20 @@
       <!-- Filler Announcements until database api is complete --> 
       <div class="col-md-4" id="announcements">
         <h3 class="header">Announcements</h3>
-        <div class="well well-sm">
-          <div class="row">
-            <div class="col-xs-2">
-              <p class="lead date_text">4/15</p>
-            </div>
+        <div ng-repeat="announcement in announcements|limitTo:3">
+          <div class="well well-sm">
 
-            <div class="col-xs-10">
-              <p class="announce_body contents">With the last few weeks of the semester approaching take some time to distress and maybe do a powerful pose before an exam! Check out <a>this TED Talk</a> by Amy Cuddy-by SIL Victoria Cardenas.</p>
-            </div>
-          </div> <!-- announce_row -->
-        </div> <!-- well -->
+            <div class="row">
+              <div class="col-xs-2">
+                <p class="lead date_text">{{formattedAnnouncementDate(announcement.datetime)}}</p>
+              </div>
 
-        <div class="well well-sm">
-          <div class="row">
-            <div class="col-xs-2">
-              <p class="lead date_text">4/08</p>
-            </div>
-
-            <div class="col-xs-10">
-              <p class="announce_body contents">Know your worth and demand three times as much. -Found through Trixie Mattel. 
-              Keep going. You're in the home stretch. Give it your all! Remember, you are stronger and more capable than you think you are. :) Shared by SIL Shareef Alwarasneh</p>
-            </div>
-          </div> <!-- announce_row -->
-        </div> <!-- well -->
+              <div class="col-xs-10">
+                <p class="announce_body contents">{{announcement.message}}</p>
+              </div>
+            </div> <!-- announce_row -->
+          </div>
+        </div>
       </div>
 
       <div class="col-md-4" id="twitter">

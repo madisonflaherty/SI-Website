@@ -3,9 +3,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="static/css/si_customize.css">
     <link rel="shortcut icon" href="static/img/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.16/angular-resource.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
     <script type="text/javascript" src="static/js/sessionScript.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -38,13 +38,17 @@
                   <p>{{section.courseNumber}}</p>
                 </td>
                 <td>
-                  <a ng-click="add_section('sections',section.secid)" class="btn btn-primary btn-lg" href="index.html" role="button">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                  </a>
+                  <div ng-hide="contains_section(section.secId)">
+                    <a ng-click="add_section('sections', section.secId)" class="btn btn-primary btn-lg" href="index.html" role="button">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+                  </div>
 
-                  <a ng-click="remove_section(section.secid)" class="btn btn-primary btn-lg" href="index.html" role="button">
-                    <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                  </a>
+                  <div ng-show="contains_section(section.secId)">
+                    <a ng-click="remove_section(section.secId)" class="btn btn-danger btn-lg" href="index.html" role="button">
+                      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </a>
+                  </div>
                 </td>
               </tr>
             </table>
