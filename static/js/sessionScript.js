@@ -3,6 +3,11 @@
 
   app.controller ('SessionsController', function($scope, $http){
 
+  moment.locale('en', {
+    calendar: {
+      sameElse : 'L [at] hh:mm a'
+    }
+  });
     /**
      * Section functions
      */
@@ -86,7 +91,8 @@
       return JSON.parse($scope.get_sections()) == null;
     }
     $scope.contains_section = function(id){
-       return JSON.parse($scope.get_sections()).indexOf(id) != -1;
+       sections = JSON.parse($scope.get_sections())
+       return sections != null && sections.indexOf(id) != -1;
     }
     $scope.remove_section = function(data) {
       console.log("Removing sections");
@@ -124,9 +130,4 @@
   });
 
 
-  moment.locale('en', {
-    calendar: {
-      sameElse : 'L [at] hh:mm a'
-    }
-  });
 })();
