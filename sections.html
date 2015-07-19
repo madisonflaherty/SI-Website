@@ -39,19 +39,23 @@
                 </td>
                 <td>
                   <div ng-hide="contains_section(section.secId)">
-                    <a ng-click="add_section('sections', section.secId)" class="btn btn-primary btn-lg" href="index.html" role="button">
+                    <a ng-click="add_section('sections', section.secId)" class="btn btn-primary btn-lg"  role="button">
                       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
                   </div>
 
                   <div ng-show="contains_section(section.secId)">
-                    <a ng-click="remove_section(section.secId)" class="btn btn-danger btn-lg" href="index.html" role="button">
+                    <a ng-click="remove_section(section.secId)" class="btn btn-danger btn-lg" role="button">
                       <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                     </a>
                   </div>
                 </td>
               </tr>
             </table>
+            <a ng-click="clear_all_sections()" class="btn btn-danger btn-lg pull-right"  role="button">
+              Remove All Sections
+            </a>
+
           </div>
         </div> <!-- col-md-10 -->
         <div class="col-md-1">

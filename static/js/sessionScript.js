@@ -106,6 +106,9 @@
         localStorage.setItem("sections", JSON.stringify(sections));
       }
     }
+    $scope.clear_all_sections = function(data){
+      localStorage.clear();
+    }
 
     /*
      * Announcements Functions
